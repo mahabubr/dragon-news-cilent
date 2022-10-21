@@ -42,7 +42,7 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">
+                        <>
                             {
                                 user?.uid
                                     ?
@@ -52,12 +52,20 @@ const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
+                                        <Link to='/login'>
+                                            <Button variant="info">
+                                                Login
+                                            </Button>
+                                        </Link>
+                                        <Link to='/register' className='ms-3'>
+                                            <Button variant="info">
+                                                Register
+                                            </Button>
+                                        </Link>
                                     </>
                             }
-                        </Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
+                        </>
+                        <Link to='/profile' >
                             {
                                 user?.photoURL
                                     ?
@@ -65,7 +73,7 @@ const Header = () => {
                                     :
                                     <FaUser />
                             }
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                     <div className='d-lg-none'>
                         <LeftSideNav />

@@ -3,8 +3,11 @@ import Main from "../../layout/Main";
 import Category from "../../pages/Category/Category/Category";
 import Home from '../../pages/Home/Home/Home'
 import Login from "../../pages/Login/Login/Login";
+import Profile from "../../pages/Login/Login/Profile";
 import Register from "../../pages/Login/Register/Register";
 import News from "../../pages/News/News/News";
+import TermsAndCondition from "../../pages/Other/TermsAndCondition/TermsAndCondition";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -25,13 +28,25 @@ export const routes = createBrowserRouter([
                 element: <Register />,
             },
             {
+                path: '/terms',
+                element: <TermsAndCondition />,
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute>
+                    <Profile />
+                </PrivateRoute>,
+            },
+            {
                 path: '/category/:id',
                 element: <Category />,
                 loader: async ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
             {
                 path: '/news/:id',
-                element: <News />,
+                element: <PrivateRoute>
+                    <News />
+                </PrivateRoute>,
                 loader: async ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]

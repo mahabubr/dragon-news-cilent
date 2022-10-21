@@ -15,8 +15,8 @@ const NewsSummaryCard = ({ news }) => {
                 <div className='d-flex'>
                     <Image src={author?.img} className="me-2" roundedCircle style={{ height: '60px' }} />
                     <div>
-                        <p className='mb-0'>{author?.name}</p>
-                        <p className='mb-0'>{author?.published_date}</p>
+                        <h5 className='mb-0'>{author?.name}</h5>
+                        <h6 className='mb-0'>{author?.published_date}</h6>
                     </div>
                 </div>
                 <div>
@@ -31,7 +31,7 @@ const NewsSummaryCard = ({ news }) => {
                     {
                         details.length > 200
                         &&
-                        <p>{details.slice(0, 200) + "..."} <Link to={`/news/${_id}`}>See More</Link></p>
+                        <>{details.slice(0, 200) + "..."} <Link to={`/news/${_id}`}>See More</Link></>
                     }
                 </Card.Text>
             </Card.Body>
